@@ -34,7 +34,22 @@ docs:
 .PHONY: test
 test:
 	@echo "$(ATTN_COLOR)==> test $(NO_COLOR)"
-	@tox -e py37,py39
+	@tox
+
+.PHONY: test-unit
+test:
+	@echo "$(ATTN_COLOR)==> test $(NO_COLOR)"
+	@tox -e unit
+
+.PHONY: test-integration
+test:
+	@echo "$(ATTN_COLOR)==> test $(NO_COLOR)"
+	@tox -e integration
+
+.PHONY: test-system
+test:
+	@echo "$(ATTN_COLOR)==> test $(NO_COLOR)"
+	@tox -e system
 
 .PHONY: test_specific
 test_specific:
