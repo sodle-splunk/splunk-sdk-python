@@ -1,21 +1,29 @@
-# Splunk Test Suite
+# Python SDK tests
 
 The test suite uses Python's standard library and the built-in **unittest** 
 library. The Splunk Enterprise SDK for Python has been tested with Python v3.7 
 and v3.9.
 
-To run the unit tests, open a command prompt in the **/splunk-sdk-python** 
-directory and enter:
+TODO: info about using tox.
 
-    python setup.py test
+TODO: info about different types of tests (unit/integration/system) + need to setup docker for integration and system.
 
-You can also run individual test files, which are located in 
-**/splunk-sdk-python/tests**. Each distinct area of the SDK is tested in a 
-single file. For example, roles are tested
-in `test_role.py`. To run this test, open a command prompt in
-the **/splunk-sdk-python/tests** subdirectory and enter:
+## Running tests
 
-    python test_role.py
+- running without -f will run on currently active python version
+- Run unit tests on all python versions:
+
+ `tox -f unit`
+
+- running all tests (unit, integration and system)
+  - `tox`
+
+- running specific test
+- running type of test on only one python version
+- 
+
+
+
 
 NOTE: Before running the test suite, make sure the instance of Splunk you
 are testing against doesn't have new events being dumped continuously
@@ -28,23 +36,8 @@ with the free Splunk license.
 
 ## Code Coverage
 
-Coverage.py is an excellent tool for measuring code coverage of Python programs.
+Code coverage is also provided with `pytest-cov` which uses `Coverage.py` under the hood. The code coverage stats are displayed at the end of each tox test run.
 
-To install it, use easy_install:
+## Test reports
 
-    easy_install coverage
-
-Or use pip:
-
-    pip install coverage
-
-To generate a report of the code coverage of the unit test suite, open a command
-prompt in the **/splunk-sdk-python** directory and enter:
-
-    python setup.py coverage
-
-This command runs the entire test suite and writes an HTML coverage report to 
-the **/splunk-sdk-python/coverage_report** directory.
-
-For more information about Coverage.py, see the author's website 
-([http://nedbatchelder.com/code/coverage/](http://nedbatchelder.com/code/coverage/)).
+Pytest also generates test reports in JUnit XML format.  For each tox environment, the test reports are saved in `test-reports/junit-{test-env}.xml`
